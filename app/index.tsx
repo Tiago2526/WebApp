@@ -1,3 +1,5 @@
+import HomeScreen from "@/app-example/(tabs)";
+import { Redirect } from "expo-router";
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -6,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  Button,
 } from "react-native";
 import {
   widthPercentageToDP as wp,
@@ -13,7 +16,7 @@ import {
 } from "react-native-responsive-screen";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }: { navigation: any }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,6 +24,26 @@ const LoginScreen = () => {
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
+    
+    function HomeScreen({navigation}: {navigation: any}) {
+      <Button
+          title="Login"
+          onPress={() =>
+            navigation.navigate('controlLogin')
+          }
+        />
+    }
+
+    const HomeScreen1 = ({navigation}: {navigation: any}) => {
+      return (
+        <Button
+          title="Login"
+          onPress={() =>
+            navigation.navigate('controlLogin')
+          }
+        />
+      );
+    };
   };
 
   return (
@@ -69,16 +92,16 @@ const LoginScreen = () => {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={(HomeScreen)}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
 
       <Text style={styles.forgotPassword}>I forgot my password</Text>
 
       <View style={styles.signupContainer}>
-        <Text>Wanna try our services?</Text>
+        <Text>No account?</Text>
         <TouchableOpacity>
-          <Text style={styles.signupText}>here you are</Text>
+          <Text style={styles.signupText}>Register here!</Text>
         </TouchableOpacity>
       </View>
     </View>
